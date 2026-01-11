@@ -29,7 +29,7 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-64 bg-[#1A1A1A] border-r border-[#00CED1]/20 min-h-screen p-4 flex flex-col">
+    <aside className="hidden lg:flex w-64 bg-[#1A1A1A] border-r border-[#00CED1]/20 min-h-screen p-4 flex-col">
       <div className="mb-8">
         <h2 className="text-xl font-bold text-white">
           PrimeAI<span className="text-[#00CED1]">.Trade</span>
