@@ -6,6 +6,8 @@ import TaskList from '@/components/TaskList'
 import TaskForm from '@/components/TaskForm'
 import TaskFilters from '@/components/TaskFilters'
 import ProfileCard from '@/components/ProfileCard'
+import StatsCard from '@/components/StatsCard'
+import { CheckCircle, Clock, AlertCircle, ListTodo } from 'lucide-react'
 
 export default function DashboardPage() {
   const [tasks, setTasks] = useState([])
@@ -76,14 +78,24 @@ export default function DashboardPage() {
     }
   }
 
+  // for editing task
   const handleEditTask = (task) => {
     setEditingTask(task)
     setShowTaskForm(true)
   }
 
+  // for canceling form
   const handleCancelForm = () => {
     setShowTaskForm(false)
     setEditingTask(null)
+  }
+
+  // for calculating task stats
+  const taskStats = {
+    total: tasks.length,
+    completed: tasks.filter(t => t.status === 'completed').length,
+    inProgress: tasks.filter(t => t.status === 'in-progress').length,
+    pending: tasks.filter(t => t.status === 'pending').length
   }
 
   if (loading) {
@@ -96,14 +108,45 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="md:w-1/3">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatsCard
+          title="Total Tasks"
+          value={taskStats.total}
+          icon={ListTodo}
+          color="teal"
+        />
+        <StatsCard
+          title="Completed"
+          value={taskStats.completed}
+          icon={CheckCircle}
+          color="green"
+        />
+        <StatsCard
+          title="In Progress"
+          value={taskStats.inProgress}
+          icon={Clock}
+          color="blue"
+        />
+        <StatsCard
+          title="Pending"
+          value={taskStats.pending}
+          icon={AlertCircle}
+          color="yellow"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Profile Card */}
+        <div className="lg:col-span-1">
           <ProfileCard user={user} />
         </div>
-        <div className="md:w-2/3">
+
+        {/* Tasks Section */}
+        <div className="lg:col-span-2">
           <div className="bg-[#1A1A1A] rounded-xl p-6 border border-[#00CED1]/20">
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+              <h1 className="text-2xl font-bold text-white">Tasks</h1>
               <button
                 onClick={() => setShowTaskForm(true)}
                 className="btn-teal-bg"
