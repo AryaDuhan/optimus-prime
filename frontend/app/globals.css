@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Compressa VF';
+  src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-compressa: 'Compressa VF', serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00CED1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #008B8B;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500;
+  }
+  
+  textarea.input-field {
+    @apply resize-y min-h-[80px];
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  textarea,
+  textarea:focus {
+    @apply text-gray-900 bg-white !important;
+    color: #111827 !important;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  /* Teal button styles */
+  .btn-teal {
+    position: relative;
+    background-color: #00CED1;
+    color: #000000;
+    border: 2px solid #00CED1;
+    border-radius: 0.5rem;
+    overflow: visible;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .btn-teal:hover {
+    background-color: #000000;
+    border-color: #00CED1;
+    color: #ffffff;
+  }
+
+  /* Flip button styles */
+  .flip-button-glow {
+    transition: box-shadow 0s ease-in-out;
+  }
+
+  .flip-button-glow:hover {
+    box-shadow: 0 0 25px rgba(0, 206, 209, 0.8), 0 0 50px rgba(0, 206, 209, 0.5);
+  }
+
+  .btn-teal-border {
+    border: none !important;
+    color: #00CED1;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent !important;
+    outline: none !important;
+  }
+
+  /* Default padding for btn-teal-border (when not using teal-border-buttons) */
+  .btn-teal-border:not(.teal-border-buttons) {
+    padding: 0 !important;
+  }
+
+  .btn-teal-bg {
+    background-color: #00CED1 !important;
+    color: #000000 !important;
+    border: 2px solid #00CED1 !important;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-teal-bg:hover {
+    background-color: #000000 !important;
+    color: #00CED1 !important;
+    border-color: #00CED1 !important;
+  }
+
+  /* Teal background buttons */
+  .teal-bg-buttons {
+    padding: 0 !important;
+    font-size: 1.125rem !important;
+    min-height: auto !important;
+    width: fit-content !important;
+    height: fit-content !important;
+  }
+
+  .teal-bg-buttons,
+  .teal-bg-buttons * {
+    font-size: 1.125rem !important;
+  }
+
+  .teal-bg-buttons svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+
+  /* Teal border buttons */
+  .teal-border-buttons {
+    padding: 0 !important;
+    font-size: 1.125rem !important;
+    min-height: auto !important;
+    width: fit-content !important;
+    height: fit-content !important;
+  }
+
+  .teal-border-buttons,
+  .teal-border-buttons * {
+    font-size: 1.125rem !important;
+  }
+
+  .teal-border-buttons svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+
+  /* Navbar buttons - 40% smaller (60% of original size) */
+  .navbar-button .flip-button-face {
+    padding: 0.75rem 1.5rem !important;
+  }
+
+  .navbar-button,
+  .navbar-button * {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+  }
+
+  .navbar-button svg {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+
+  /* Flip button face common properties */
+  .flip-button-face {
+    border-radius: 0.5rem;
+    border-width: 2px;
+    outline: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem !important;
+    cursor: pointer;
+    width: max-content;
+    height: max-content;
+  }
+
+  /* Teal background button front */
+  .flip-button-teal-front {
+    background-color: #00CED1 !important;
+    color: #000000 !important;
+    border-color: #00CED1 !important;
+  }
+
+  .flip-button-teal-front:hover {
+    color: #000000 !important;
+  }
+
+  /* Black background button back */
+  .flip-button-black-back {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #00CED1 !important;
+  }
+
+  .flip-button-black-back:hover {
+    color: #ffffff !important;
+  }
+
+  /* Transparent background button front (teal border) */
+  .flip-button-transparent-front {
+    background-color: transparent !important;
+    color: #00CED1 !important;
+    border-color: #00CED1 !important;
+  }
+
+  .flip-button-transparent-front:hover {
+    background-color: transparent !important;
+  }
+
+  /* Teal background button back (teal border on hover) */
+  .flip-button-teal-back {
+    background-color: #00CED1 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+  }
+
+  .flip-button-teal-back:hover {
+    background-color: #00CED1 !important;
+    color: #000000 !important;
+  }
+
+  /* Remove unwanted focus rings and default borders on flip buttons */
+  .flip-button-glow[data-slot="flip-button"],
+  .flip-button-glow[data-slot="flip-button"]:hover,
+  .flip-button-glow[data-slot="flip-button"]:focus,
+  .flip-button-glow[data-slot="flip-button"]:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .flip-button-glow[data-slot="flip-button"]:focus-visible {
+    box-shadow: 0 0 25px rgba(0, 206, 209, 0.8), 0 0 50px rgba(0, 206, 209, 0.5) !important;
+  }
+}

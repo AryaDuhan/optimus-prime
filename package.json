@@ -1,0 +1,14 @@
+{
+  "name": "primetrade-intern-task",
+  "version": "1.0.0",
+  "description": "Scalable Web App with Authentication & Dashboard",
+  "scripts": {
+    "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
