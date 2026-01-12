@@ -6,7 +6,15 @@ require('dotenv').config();
 const app = express();
 
 // for cors
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    /\.trycloudflare\.com$/, // allow temporary Cloudflare tunnel URLs
+    process.env.FRONTEND_URL // optional explicit frontend url
+  ].filter(Boolean),
+  credentials: true
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // routes
